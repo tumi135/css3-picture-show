@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style></style>
+</head>
+<style>
+*{
+    padding: 0px;
+    margin: 0px;
+    list-style: none;
+}
+    .wrapper{
+        width: 700px;
+        margin: 200px auto;
+        border: 1px solid black;
+    }
+    ul{
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+
+    }
+    li{
+        display: inline-block;
+        width: 200px;
+        height: 200px;
+        margin: 10px;
+    }
+    .picBox{
+        position: relative;
+        width: 100%;
+        height: 100%;
+        transform-style: preserve-3d;
+        transform-origin: 50% 50% -100px;
+        animation: 0.5s ease-out forwards;
+
+    }
+    .wrapper .in-top .picBox{
+        animation-name: in-top;
+    }
+.wrapper .out-top .picBox{
+    animation-name: out-top;
+}
+.wrapper .in-bottom .picBox{
+    animation-name: in-bottom;
+}
+.wrapper .out-bottom .picBox{
+    animation-name: out-bottom;
+}
+.wrapper .in-left .picBox{
+    animation-name: in-left;
+}
+.wrapper .out-left .picBox{
+    animation-name: out-left;
+}
+.wrapper .in-right .picBox{
+    animation-name: in-right;
+}
+.wrapper .out-right .picBox{
+    animation-name: out-right;
+}
+    .show{
+        opacity: 0.5;
+    }
+    .show, .hide{
+        width: 100%;
+        height:100%;
+
+    }
+    .hide{
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: black;
+        font-size: 30px;
+        font-weight: 500;
+        color: white;
+        text-align: center;
+        line-height: 200px;
+        transform: translate3d(0,0,-1px);
+    }
+    .show img{
+        width: 100%;
+        height:100%;
+    }
+.wrapper .in-top .picBox .hide,.wrapper .out-top .picBox .hide{
+        transform-origin: bottom;
+        transform: translate3d(0,-200px,0) rotate3d(1,0,0,90deg);
+    }
+.wrapper .in-left .picBox .hide,.wrapper .out-left .picBox .hide{
+    transform-origin: right;
+    transform: translate3d(-200px,0,0) rotate3d(0,1,0,-90deg);
+}
+.wrapper .in-right .picBox .hide,.wrapper .out-right .picBox .hide{
+    transform-origin: left;
+    transform: translate3d(200px,0,0) rotate3d(0,1,0,90deg);
+}
+.wrapper .in-bottom .picBox .hide,.wrapper .out-bottom .picBox .hide{
+    transform-origin: top;
+    transform: translate3d(0,200px,0) rotate3d(1,0,0,-90deg);
+}
+    @keyframes in-top {
+        from{
+            transform: rotate3d(0,0,0,0);
+        }
+        to{
+            transform: rotate3d(-1,0,0,90deg);
+        }
+    }
+@keyframes out-top {
+    from{
+        transform: rotate3d(-1,0,0,90deg);
+    }
+    to{
+        transform: rotate3d(0,0,0,0);
+    }
+}
+@keyframes in-bottom {
+    from{
+        transform: rotate3d(0,0,0,0);
+    }
+    to{
+        transform: rotate3d(1,0,0,90deg);
+    }
+}
+@keyframes out-bottom {
+    from{
+        transform: rotate3d(1,0,0,90deg);
+    }
+    to{
+        transform: rotate3d(0,0,0,0);
+    }
+}
+@keyframes in-left {
+    from{
+        transform: rotate3d(0,0,0,0);
+    }
+    to{
+        transform: rotate3d(0,1,0,90deg);
+    }
+}
+@keyframes out-left {
+    from{
+        transform: rotate3d(0,1,0,90deg);
+    }
+    to{
+        transform: rotate3d(0,0,0,0);
+    }
+}
+@keyframes in-right {
+    from{
+        transform: rotate3d(0,0,0,0);
+    }
+    to{
+        transform: rotate3d(0,-1,0,90deg);
+    }
+}
+@keyframes out-right {
+    from{
+        transform: rotate3d(0,-1,0,90deg);
+    }
+    to{
+        transform: rotate3d(0,0,0,0);
+    }
+}
+</style>
+<body>
+<div class="wrapper">
+    <ul>
+        <li >
+            <div class="picBox">
+                <div class="show"><img src="src/images/1.jpg"></div>
+                <div class="hide"><h3>小鸟</h3></div>
+            </div>
+        </li>
+        <li >
+            <div class="picBox">
+                <div class="show"><img src="src/images/1.jpg"></div>
+                <div class="hide"><h3>小鸟</h3></div>
+            </div>
+        </li><li >
+        <div class="picBox">
+            <div class="show"><img src="src/images/1.jpg"></div>
+            <div class="hide"><h3>小鸟</h3></div>
+        </div>
+    </li><li >
+        <div class="picBox">
+            <div class="show"><img src="src/images/1.jpg"></div>
+            <div class="hide"><h3>小鸟</h3></div>
+        </div>
+    </li><li>
+        <div class="picBox">
+            <div class="show"><img src="src/images/1.jpg"></div>
+            <div class="hide"><h3>小鸟</h3></div>
+        </div>
+    </li><li>
+        <div class="picBox">
+            <div class="show"><img src="src/images/1.jpg"></div>
+            <div class="hide"><h3>小鸟</h3></div>
+        </div>
+    </li>
+    </ul>
+</div>
+<script>
+    var oli = Array.prototype.slice.call(document.getElementsByTagName('li'));
+    oli.forEach(function (ele,index) {
+        ele.addEventListener('mouseenter',function (e) {
+            addClass(this,e,'in');
+        })
+        ele.addEventListener('mouseleave',function (e) {
+            console.log('out')
+            addClass(this,e,'out');
+        })
+    })
+    function addClass(ele,e,state) {
+        var x = e.offsetX - ele.offsetWidth/2;
+        var y = e.offsetY - ele.offsetHeight/2;
+        var d = (Math.round((Math.atan2(y,x)*(180/Math.PI)+180)/90)+3)%4;
+        var direction;
+        switch (d){
+            case 0:
+                direction = '-top';
+                break;
+            case 1:
+                direction = '-right';
+                break;
+            case 2:
+                direction = '-bottom';
+                break;
+            case 3:
+                direction = '-left';
+                break;
+        }
+        ele.className = state + direction;
+
+    }
+</script>
+</body>
+</html>

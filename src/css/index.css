@@ -1,0 +1,160 @@
+*{
+    padding:0;
+    margin:0;
+    list-style:none;
+}
+html,body,.wrapper{
+    width: 100%;
+    height: 100%;
+}
+.wrapper{
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    background: #000;
+    color: white;
+}
+.content{
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+    width: 80%;
+    height: 80%;
+
+}
+.item{
+    width: 16%;
+    height: 100%;
+    border-radius: 20px;
+    overflow: hidden;
+    background: #666666;
+    transition: height 0.5s linear 0.5s,width 0.5s linear;
+}
+.active{
+    width: 100%;
+}
+.wrapper-active .item{
+    transition: height 0.5s linear,width 0.5s linear;
+}
+.wrapper-active .item:not(.active){
+    width: 0%;
+    height: 0%;
+}
+.item .inner{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+    overflow: hidden;
+    transition: transform 0.5s linear;
+
+
+}
+.item:nth-of-type(5) .inner{
+    transition-delay:0.1s ;
+}
+.item:nth-of-type(4) .inner{
+    transition-delay:0.2s ;
+}
+.item:nth-of-type(3) .inner{
+    transition-delay:0.3s ;
+}
+.item:nth-of-type(2) .inner{
+    transition-delay:0.4s ;
+}
+.item:nth-of-type(1) .inner{
+    transition-delay:0.5s ;
+}
+.init .item .inner{
+
+    transform: translate3d(0,100%,0);
+}
+.item .bg{
+    width: 100%;
+    height:100%;
+    background-size: cover;
+    background-position:center;
+    opacity: 0.5;
+}
+.item:nth-of-type(1) .bg{
+    background-image: url(../images/1.jpg);
+}
+.item:nth-of-type(2) .bg{
+    background-image: url(../images/2.jpg);
+}
+.item:nth-of-type(3) .bg{
+    background-image: url(../images/3.jpg);
+}
+.item:nth-of-type(4) .bg{
+    background-image: url(../images/4.jpg);
+}
+.item:nth-of-type(5) .bg{
+    background-image: url(../images/5.jpg);
+}
+.item:nth-of-type(6) .bg{
+    background-image: url(../images/6.jpg);
+}
+.item .title{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+.wrapper .title{
+    transition: opacity 0.2s linear 1s;
+}
+.wrapper-active .item .title{
+    opacity: 0;
+    transition:opacity 0.2s linear ;
+}
+
+.item .title h2{
+    font-size:14px;
+}
+.item:hover .title h2{
+    font-size: 20px;
+    transition:font-size 0.2s linear;
+}
+.item:hover .bg{
+    opacity: 1;
+}
+.item .dis{
+    position: absolute;
+    top: 20px;
+    width: 100%;
+    height: 30px;
+    opacity: 0;
+    transition: opacity 0.2s linear;
+}
+.item .header{
+    float: left;
+    margin-left: 30px;
+    line-height: 30px;
+}
+.item .close{
+    position: relative;
+    width: 30px;
+    height: 30px;
+    float: right;
+    margin-right: 30px;
+}
+.item .close::before,.item .close::after{
+    content: '';
+    position: absolute;
+    top: 50%;
+    margin-top: -1px;
+    height: 0px;
+    width: 30px;
+    height: 2px;
+    background:white;
+}
+.item .close::before{
+    transform: rotate(45deg);
+}
+.item .close::after{
+    transform: rotate(-45deg);
+}
+.active .dis{
+    opacity: 1;
+    transition: opacity 0.2s linear 1s;
+}
